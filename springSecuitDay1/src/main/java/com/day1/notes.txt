@@ -30,4 +30,5 @@ Security architecture should be simple.
 
 when  authentication fail we will get 401 error
 and for authorrization 403
+we will get a jssionId
 
