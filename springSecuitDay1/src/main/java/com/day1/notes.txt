@@ -25,4 +25,6 @@ Test the role and access of each user.
 4. Have defense in depth
 Multiple level of security (In Transport layer, Network layer, Infrastructures layer, application layer, OS layer)
 5. Have Economy of Mechanism
+
 Security architecture should be simple.
+
