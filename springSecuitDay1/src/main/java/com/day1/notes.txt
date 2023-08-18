@@ -1,0 +1,28 @@
+Introduction
+Security:
+It is for protecting data and business logic inside our application.
+Security is a non-functional requirement:
+Function requirement: what type of real business functionality. what type of pages.
+Non-functional requirements: security, scalability. performance, availability, etc.
+Security Fundamentals:
+In any system we have some resources like a REST API, a web application, a database, a resource in the cloud.
+We have identities: Identities need to access to resources and perform actions. for example, execute a Rest API call
+read/modify data.
+
+Important Security Principles:
+1. Trust nothing
+Validate every request
+Validate piece of data or information that comes into the system.
+2. Assign Least privileges
+Start the design the system with security requirement in mind.
+Have a clear picture of the user roles and access.
+Assign minimum possible privileges at all levels.
+Application level
+Infrastructures(database + servers + )
+3. Have complete mediation
+Everyone has to pass through one main gate.
+Test the role and access of each user.
+4. Have defense in depth
+Multiple level of security (In Transport layer, Network layer, Infrastructures layer, application layer, OS layer)
+5. Have Economy of Mechanism
+Security architecture should be simple.
