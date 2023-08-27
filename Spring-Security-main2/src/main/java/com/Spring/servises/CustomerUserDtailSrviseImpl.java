@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.Spring.entity.Authority;
 import com.Spring.entity.Customer;
 import com.Spring.repos.CustomerRepo;
 
@@ -30,13 +29,9 @@ public class CustomerUserDtailSrviseImpl implements UserDetailsService{
 		Customer customer= opt.get();
 		//Empty Authorities
 		List<GrantedAuthority> authorities= new ArrayList<>();
-		List<Authority>auths=customer.getAuthorities();
 		
-		
-		for (Authority auth : auths) {
-			SimpleGrantedAuthority sga = new SimpleGrantedAuthority(auth.getName());
-			authorities.add(sga);
-			}
+		SimpleGrantedAuthority sga= new SimpleGrantedAuthority(customer.getRole());
+		authorities.add(sga);
 		//authorities.add(new SimpleGrantedAuthority(customer.getRole()));
 		return new User(customer.getEmail(), customer.getPassword(), authorities);
 		//return new CustomerUserDetails(customer);

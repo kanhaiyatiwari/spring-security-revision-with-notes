@@ -32,7 +32,6 @@ public class Customer {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	private String address;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer",fetch=FetchType.EAGER)
-	private List<Authority> authorities = new ArrayList<>();
+	private String role;
 	
 }

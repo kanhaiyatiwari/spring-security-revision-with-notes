@@ -17,8 +17,8 @@ public class MyConfigration {
 		http.authorizeHttpRequests(auth->{
 			auth
 			.requestMatchers(HttpMethod.POST,"/customers").permitAll()
-			.requestMatchers(HttpMethod.GET,"/customers","/hello").hasAnyAuthority("VIEWALLCUSTOMER")
-			.requestMatchers(HttpMethod.GET,"/customers/**").hasAnyAuthority("VIEWALLCUSTOMER","VIEWCUSTOMER")
+			.requestMatchers(HttpMethod.GET,"/customers","/hello").hasRole("ADMIN")
+			.requestMatchers(HttpMethod.GET,"/customers/**").hasAnyRole("ADMIN","USER")
 			.anyRequest().authenticated();
 		})
 		.csrf(crsf->crsf.disable())
