@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Spring.entity.Authority;
 import com.Spring.entity.Customer;
 import com.Spring.exception.CustomerException;
 import com.Spring.repos.CustomerRepo;
@@ -16,7 +17,12 @@ public class CustomerServisesImpl implements CustomerServise{
 	@Override
 	public Customer registerCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		
+		List<Authority> authorities= customer.getAuthorities();
+		//associating each authority with customer
+		for(Authority authority:authorities) {
+		authority.setCustomer(customer);
+		}
+		//return customerRepository.save(customer);
 		return crepo.save(customer);
 	}
 

@@ -7,11 +7,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.Spring.entity.Authority;
 import com.Spring.entity.Customer;
 import com.Spring.repos.CustomerRepo;
 
@@ -27,9 +30,17 @@ public class CustomerUserDtailSrviseImpl implements UserDetailsService{
 		Customer customer= opt.get();
 		//Empty Authorities
 		List<GrantedAuthority> authorities= new ArrayList<>();
+		List<Authority>auths=customer.getAuthorities();
+		
+		
+		for (Authority auth : auths) {
+			SimpleGrantedAuthority sga = new SimpleGrantedAuthority(auth.getName());
+			authorities.add(sga);
+			}
 		//authorities.add(new SimpleGrantedAuthority(customer.getRole()));
-		return new org.springframework.security.core.userdetails.User(customer.getEmail(), customer.getPassword(), authorities);
+		return new User(customer.getEmail(), customer.getPassword(), authorities);
 		//return new CustomerUserDetails(customer);
+		
 		}else
 		throw new BadCredentialsException("User Details not found with this username: "+username);
 	}
