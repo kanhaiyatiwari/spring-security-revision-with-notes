@@ -27,7 +27,7 @@ public class CustomerController {
 public String printHello() {
 	return "hello";
 }
-@PostMapping("/customer")
+@PostMapping("/customers")
 public ResponseEntity<Customer> saveCustomerHendller(@RequestBody Customer customer){
 	customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 	Customer registerd=cs.registerCustomer(customer);
@@ -35,13 +35,13 @@ public ResponseEntity<Customer> saveCustomerHendller(@RequestBody Customer custo
 	
 }
 
-@GetMapping("/customer/{email}")
+@GetMapping("/customers/{email}")
 public ResponseEntity<Customer> findCustomer(@PathVariable("email") String email){
 	
 	Customer customer =cs.getCustomerDetailsByEmail(email);
 	return new ResponseEntity<>(customer,HttpStatus.ACCEPTED);
 }
-@GetMapping("/customer")
+@GetMapping("/customers")
 public ResponseEntity<List<Customer>> findAllCustomer(){
 	
 	List<Customer> customers=cs.getAllCustomerDetails();
