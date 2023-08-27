@@ -16,6 +16,7 @@ public class MyConfigration {
 	public SecurityFilterChain Securityconfig(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth->{
 			auth.requestMatchers(HttpMethod.POST, "/customers").permitAll()
+			.requestMatchers("/hello").permitAll()
 			.anyRequest().authenticated();
 		})
 		.csrf(crsf->crsf.disable())

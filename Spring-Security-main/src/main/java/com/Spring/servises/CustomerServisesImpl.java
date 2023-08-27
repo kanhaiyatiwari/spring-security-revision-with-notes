@@ -3,6 +3,7 @@ package com.Spring.servises;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Spring.entity.Customer;
@@ -10,7 +11,7 @@ import com.Spring.exception.CustomerException;
 import com.Spring.repos.CustomerRepo;
 @Service
 public class CustomerServisesImpl implements CustomerServise{
-
+@Autowired
 	private CustomerRepo crepo;
 	@Override
 	public Customer registerCustomer(Customer customer) {
