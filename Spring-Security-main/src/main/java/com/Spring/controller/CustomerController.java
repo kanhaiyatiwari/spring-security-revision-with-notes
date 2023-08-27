@@ -41,7 +41,7 @@ public ResponseEntity<Customer> findCustomer(@PathVariable("email") String email
 	Customer customer =cs.getCustomerDetailsByEmail(email);
 	return new ResponseEntity<>(customer,HttpStatus.ACCEPTED);
 }
-@GetMapping("/customer}")
+@GetMapping("/customer")
 public ResponseEntity<List<Customer>> findAllCustomer(){
 	
 	List<Customer> customers=cs.getAllCustomerDetails();
